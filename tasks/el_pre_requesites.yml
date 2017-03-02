@@ -1,0 +1,5 @@
+---
+# Pre-Requesites for RH or CentOS
+
+- name: Install parted
+  yum: name=parted state=latest

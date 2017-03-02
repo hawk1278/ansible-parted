@@ -1,0 +1,14 @@
+---
+# tasks file for parted
+
+- name: Pre-Requesites
+  include: el_pre_requesites.yml
+  when: (ansible_os_family == "CentOS") or
+        (ansible_os_family == "RedHat")
+  become: yes
+
+- name: Partition disks
+  include: partition.yml
+  become: yes
+  when:
+  - "{{ hdds }}"

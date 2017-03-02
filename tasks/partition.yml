@@ -1,0 +1,24 @@
+---
+# Partition disks
+
+- name: Create the label on disks
+  shell: parted -s "{{ item }}" mklabel "{{ label }}"
+  with_items:
+  - "{{ hdds }}"
+  when:
+  - create_label
+  - "{{ item|basename in hostvars[inventory_hostname]['ansible_devices'] }}"
+  tags:
+  - partition
+  - parted
+
+- name: Create the partitions
+  shell: parted -a "{{ parted_optimization }}" -s "{{ item.0 }}" mkpart "{{ item.1['partition_type'] }}" "{{ item.1['start_point'] }}" "{{ item.1['end_point'] }}"
+  with_nested:
+  - "{{ hdds }}"
+  - "{{ partitions }}"
+  when:
+  - "{{ item.0|basename in hostvars[inventory_hostname]['ansible_devices'] }}"
+  tags:
+  - partition
+  - parted

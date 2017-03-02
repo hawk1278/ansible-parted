@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - parted
+  vars:
+  - disks:
+    - /dev/sdb
+    - /dev/sdc

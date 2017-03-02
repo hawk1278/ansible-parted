@@ -1,0 +1,16 @@
+---
+# defaults file for parted
+
+# Default parted optimization
+parted_optimization: optimal
+
+# Create label by default
+create_label: true
+label: gpt
+
+# Partitions
+
+partitions:
+- {'partition_type': 'primary', 'start_point': '0%', 'end_point': '100%'}
+
+#- {'partition_type': '', 'start_point': '', 'end_point': ''}
