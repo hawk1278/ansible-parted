@@ -28,15 +28,13 @@ Example Playbook
 
 ```
 - hosts:
-  - nc-9
+  - web
   roles:
   - parted
   vars:
   - hdds:
-    - /dev/sdb
+    - /dev/xvdd1
   - partitions:
-    - {'partition_type': 'primary', 'start_point': '0%', 'end_point': '10%'}
-    - {'partition_type': 'primary', 'start_point': '10%', 'end_point': '50%'}
     - {'partition_type': 'extended', 'start_point': '50%', 'end_point': '100%'}
 
 
@@ -46,8 +44,3 @@ License
 -------
 
 GPLv3
-
-Author Information
-------------------
-
-John Preston [John Mille]
