@@ -1,5 +1,11 @@
 ---
 # Partition disks
+- name: Check to see if partition exists on disk already
+  shell: /sbin/partprobe -s "{{ item }}"
+  with_items:
+  - "{{ hdds }}"
+  register: check_partitions
+  failed_when: "'FAILED' in check_partitions.stderr"
 
 - name: Create the label on disks
   shell: parted -s "{{ item }}" mklabel "{{ label }}"
