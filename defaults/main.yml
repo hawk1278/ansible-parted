@@ -5,12 +5,10 @@
 parted_optimization: optimal
 
 # Create label by default
-create_label: true
+create_label: false
 label: gpt
 
 # Partitions
 
 partitions:
-- {'partition_type': 'primary', 'start_point': '0%', 'end_point': '100%'}
-
-#- {'partition_type': '', 'start_point': '', 'end_point': ''}
+- {'partition_type': '', 'start_point': '', 'end_point': ''}
